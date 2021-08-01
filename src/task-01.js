@@ -7,7 +7,7 @@ const buttonStopEl = document.querySelector('[data-stop]');
 //Знаходимо елемент кнопки body
 const bodyEl = document.querySelector('body');
 
-// Ініціалізація контейнера для 
+// Ініціалізація контейнера id таймера
 let backgroundTimerId = null;
 
 //Початкова дезактивація кнопки Stop
