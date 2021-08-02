@@ -25,21 +25,17 @@ inputFirstEl.addEventListener('input', (event) => {
   }
 });
 
-
-inputDelay = 5000;
-
-
+// Функція яка повертає проміс, який виконується після затримки
 const delay = ms => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(ms);
-      reject('ups');
+      // reject('ups');
     }, ms);
   });
 };
 
-
-
+//Функція яка чіпляється на обробку проміса
 const logger = time => console.log(`Fulfilled after ${time}ms`);
 
 //Слухач кнопки підзавдання 1
@@ -47,40 +43,58 @@ buttonFirstEl.addEventListener('click', () => {
   delay(inputDelay).then(logger);
 });
 
-//------------ ПІДЗАВДАННЯ 2 -----------------
-
-//delay(inputDelay).then(logger)
+// delay(inputDelay).then(logger)
 
 // // Tests
 // delay(inputDelay).then(logger); // Fulfilled after 2000ms
 // delay(1000).then(logger); // Fulfilled after 1000ms
 // delay(1500).then(logger); // Fulfilled after 1500ms
 
-// //Підзавдання 2
+//------------ ПІДЗАВДАННЯ 2 -----------------
 
-// const users = [
-//   { name: 'Mango', active: true },
-//   { name: 'Poly', active: false },
-//   { name: 'Ajax', active: false },
-// ];
+//Знаходимо інпут підзавдання 1
+const inputSecondEl = document.querySelector('#second-input');
+//Знаходимо кнопку підзавдання 1
+const buttonSecondEl = document.querySelector('[data-second]');
 
-// const toggleUserState = (allUsers, username, callback) => {
-//   const updatedUsers = allUsers.map(user =>
-//     user.name === username ? { ...user, active: !user.active } : user
-//   );
+buttonSecondEl.disabled = 'true';
 
-//   callback(updatedUsers);
-// };
+let selectedUser = null;
 
-// // Currently the function works like this
-// toggleUserState(users, 'Mango', console.table);
-// toggleUserState(users, 'Ajax', console.table);
+const users = [
+  { name: 'Mango', active: true },
+  { name: 'Poly', active: false },
+  { name: 'Ajax', active: false },
+];
 
-// // The function should work like this
+const toggleUserState = (allUsers, username) => {
+
+    return new Promise((resolve) => {
+      resolve(allUsers.map(user =>
+        user.name === username ? { ...user, active: !user.active } : user
+      ));
+    });
+};
+
+//Слухач елементу поля "select"
+inputSecondEl.addEventListener('input', (event) => {
+  if (event.currentTarget.value !== "undefined") {
+    buttonSecondEl.removeAttribute('disabled');
+  } else {
+    buttonSecondEl.disabled = 'true';
+  }
+  selectedUser = event.currentTarget.value;
+});
+//Слухач кнопки підзавдання 2
+buttonSecondEl.addEventListener('click', () => {
+  toggleUserState(users, selectedUser).then(console.table);
+});
+
+// // // The function should work like this
 // toggleUserState(users, 'Mango').then(console.table);
 // toggleUserState(users, 'Ajax').then(console.table);
 
-// //Підзавдання 3
+//------------ ПІДЗАВДАННЯ 3 -----------------
 
 // const randomIntegerFromInterval = (min, max) => {
 //   return Math.floor(Math.random() * (max - min + 1) + min);
