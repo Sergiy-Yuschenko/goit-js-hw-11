@@ -15,16 +15,64 @@ img {
   max-width: 100%;
 }
 
+h1,
+h2 {
+  text-align: center;
+  margin: 0;
+}
+
 #date-selector.invalid {
   border-color: #f44336;
 }
+//
+ul {
+  margin: 0;
+  padding: 0;
+}
+.back-link,
+.task-list {
+  text-align: center;
+}
+//Завдання 2
+.timer {
+  display: flex;
+}
+.field:not(:first-child) {
+  margin-left: 20px;
+}
+.value {
+  text-align: center;
+  font-size: 60px;
+}
+.label {
+  text-align: center;
+  text-transform: uppercase;
+}
 
-.main-field {
-  font-size: 90px;
+.value,
+.label {
+  display: block;
 }
 
 //Завдання 3
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
 
 .button-wrapper {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: aquamarine;
+  width: 400px;
+}
+
+.form-el {
   margin-bottom: 20px;
 }

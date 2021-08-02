@@ -112,7 +112,6 @@ const counter = () => {
     hoursEl.textContent = `${pad(convertMs((targetTime - Date.now())).hours)}`;
     minutesEl.textContent = `${pad(convertMs((targetTime - Date.now())).minutes)}`;
     secondsEl.textContent = `${pad(convertMs((targetTime - Date.now())).seconds)}`;
-    allcountersEl.textContent =`${pad(convertMs((targetTime - Date.now())).days)}:${pad(convertMs((targetTime - Date.now())).hours)}:${pad(convertMs((targetTime - Date.now())).minutes)}:${pad(convertMs((targetTime - Date.now())).seconds)}`
     if ((targetTime - Date.now()) < 1040) {
       clearInterval(timerId);
       Swal.fire('Обрана дата настала! Лічильник зупинено.');
